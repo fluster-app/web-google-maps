@@ -1,0 +1,60 @@
+{
+  "name": "web-google-maps",
+  "version": "1.0.0-beta.0",
+  "description": "A Web Component to wrap and use Google Maps",
+  "keywords": [
+    "google maps"
+  ],
+  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
+  "types": "dist/types/components.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "files": [
+    "dist/",
+    "readme.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
+    "serve": "stencil-dev-server",
+    "start": "npm run dev",
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@stencil/core": "^0.14.0",
+    "@stencil/dev-server": "latest",
+    "@stencil/postcss": "^0.1.0",
+    "@stencil/sass": "0.1.1",
+    "@stencil/utils": "latest",
+    "@types/googlemaps": "^3.30.15",
+    "@types/jest": "^23.3.5",
+    "autoprefixer": "^9.2.1",
+    "jest": "^23.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fluster/web-google-maps.git"
+  },
+  "author": "David Dal Busco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fluster/web-google-maps"
+  },
+  "homepage": "https://webgooglemaps.com",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  }
+}

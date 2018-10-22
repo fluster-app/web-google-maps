@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+  <meta name="description" content="A Web Component to easily integrate Google Maps in your application">
+  <meta name="author" content="David Dal Busco">
+
+  <script src="/build/webgooglemaps.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <!-- Bootstrap -->
+  <style>
+    :root {
+      --jumbotron-padding-y: 3rem;
+    }
+
+    .jumbotron {
+      padding-top: var(--jumbotron-padding-y);
+      padding-bottom: var(--jumbotron-padding-y);
+      margin-bottom: 0;
+      background-color: #fff;
+    }
+
+    .jumbotron p:last-child {
+      margin-bottom: 0;
+    }
+
+    .jumbotron-heading {
+      font-weight: 300;
+    }
+
+    .jumbotron .container {
+      max-width: 40rem;
+    }
+
+    footer {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    .box-shadow {
+      box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+    }
+  </style>
+
+</head>
+<body>
+
+<header>
+  <div class="collapse bg-dark" id="navbarHeader">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 col-md-7 py-4">
+          <h4 class="text-white">About</h4>
+          <p class="text-muted">The goal of this project is to provide an agnostic Web Component to easily integrate
+            Google Maps into my project <a href="https://fluster.io"
+                                           class="text-white">Fluster</a>. This web component is published on
+            <a href="https://github.com/fluster/web-google-maps" class="text-white">Github</a> under license
+            MIT © <a href="mailto:david.dalbusco@outlook.com" class="text-white">David Dal Busco</a></p>
+        </div>
+        <div class="col-sm-4 offset-md-1 py-4">
+          <h4 class="text-white">Contact</h4>
+          <ul class="list-unstyled">
+            <li><a href="https://github.com/fluster/web-google-maps" class="text-white">Github</a></li>
+            <li><a href="http://twitter.com/daviddalbusco" class="text-white">Twitter</a></li>
+            <li><a href="mailto:david.dalbusco@outlook.com" class="text-white">Email me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="navbar navbar-dark bg-dark box-shadow">
+    <div class="container d-flex justify-content-between">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <strong>Web Google Maps</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+              aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main role="main">
+
+  <section class="jumbotron text-center">
+    <div class="container">
+      <h1 class="jumbotron-heading">Web Google Maps</h1>
+      <p class="lead text-muted">Web Google Maps is a Web Component which lets you easily integrate Google Maps in your
+        application. The component could be embedded in the most popular frontend frameworks</p>
+      <p>
+        <a href="https://github.com/fluster/web-google-maps" class="btn btn-dark my-2"><i class="fab fa-github"></i>
+          Github</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Showcase -->
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-12">
+          <h2 class="text-center mb-4">Showcase</h2>
+        </div>
+
+        <div class="col-md-6 mt-6">
+          <div class="card mb-4 box-shadow">
+            <div class="card-top">
+              <web-google-maps lat="47.36667" lng="8.55"></web-google-maps>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Styles and Circles</p>
+              <p class="collapse card-text" id="demo-nofilter">
+                <code>
+                  &lt;web-google-maps lat="47.36667" lng="8.55" [mapStyle]="myStyle" [circles]="myCircles"&gt;&lt;/web-google-maps&gt;
+                </code>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" data-toggle="collapse" data-target="#demo-nofilter"
+                          class="btn btn-sm btn-outline-primary">View code
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mt-6">
+          <div class="card mb-4 box-shadow">
+            <div class="card-top">
+              <web-google-maps lat="43.073051" lng="-89.401230"></web-google-maps>
+            </div>
+            <div class="card-body">
+              <p class="card-text">Markers and Info Windows</p>
+              <p class="collapse card-text" id="demo-sepia">
+                <code>
+                  &lt;web-google-maps lat="47.36667" lng="8.55" [markers]="myMarkers"&gt;&lt;/web-google-maps&gt;
+                </code>
+              </p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" data-toggle="collapse" data-target="#demo-sepia"
+                          class="btn btn-sm btn-outline-primary">View code
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+</main>
+
+<footer class="text-muted">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>License MIT &copy; <a href="mailto:david.dalbusco@outlook.com">David Dal Busco</a></p>
+  </div>
+</footer>
+
+<script type="text/javascript">
+
+  const mapStyle = {
+    styles: [
+      {
+        "featureType": "road",
+        "stylers": [
+          {
+            "hue": "#5e00ff"
+          },
+          {
+            "saturation": -79
+          }
+        ]
+      },
+      {
+        "featureType": "poi",
+        "stylers": [
+          {
+            "saturation": -78
+          },
+          {
+            "hue": "#6600ff"
+          },
+          {
+            "lightness": -47
+          },
+          {
+            "visibility": "off"
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "stylers": [
+          {
+            "lightness": 22
+          }
+        ]
+      },
+      {
+        "featureType": "landscape",
+        "stylers": [
+          {
+            "hue": "#6600ff"
+          },
+          {
+            "saturation": -11
+          }
+        ]
+      },
+      {},
+      {},
+      {
+        "featureType": "water",
+        "stylers": [
+          {
+            "saturation": -65
+          },
+          {
+            "hue": "#1900ff"
+          },
+          {
+            "lightness": 8
+          }
+        ]
+      },
+      {
+        "featureType": "road.local",
+        "stylers": [
+          {
+            "weight": 1.3
+          },
+          {
+            "lightness": 30
+          }
+        ]
+      },
+      {
+        "featureType": "transit",
+        "stylers": [
+          {
+            "visibility": "simplified"
+          },
+          {
+            "hue": "#5e00ff"
+          },
+          {
+            "saturation": -16
+          }
+        ]
+      },
+      {
+        "featureType": "transit.line",
+        "stylers": [
+          {
+            "saturation": -72
+          }
+        ]
+      },
+      {}
+    ],
+    name: "Purple Rain"
+  };
+
+  const circles = [
+    {
+      lat: 47.46667,
+      lng: 8.55,
+      radius: 10000,
+      fillColor: '#ff8ea3',
+      draggable: false,
+      editable: false,
+      clickable: false
+    },
+    {
+      lat: 47.56667,
+      lng: 8.75,
+      radius: 5000,
+      fillColor: '#ff65a9',
+      draggable: false,
+      editable: false,
+      clickable: false
+    }
+  ];
+
+  const markers = [{
+    lat: 43.073051,
+    lng: -89.401230,
+    icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png',
+    infoWindowOptions: {
+      content: "Cool"
+    }
+    },
+    {
+      lat: 43.075051,
+      lng: -86.425230,
+      icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png',
+      infoWindowOptions: {
+        content: "Cool cool cool"
+      }
+    },
+    {
+      lat: 42.173051,
+      lng: -89.501230,
+      icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png',
+      infoWindowOptions: {
+        content: "All good?"
+      }
+    },
+    {
+      lat: 43.373051,
+      lng: -88.401230,
+      icon: 'https://maps.gstatic.com/mapfiles/api-3/images/spotlight-poi.png',
+      infoWindowOptions: {
+        content: "Hello, what's up?"
+      }
+    }];
+
+  const firstMapOptions = {
+    zoom: 9
+  };
+
+  const secondMapOptions = {
+    streetViewControl: true,
+    fullscreenControl: true
+  };
+
+  document.addEventListener("DOMContentLoaded", function (event) {
+    const elem = document.getElementsByTagName('web-google-maps');
+    if (elem && elem.length > 0) {
+      for (let i = 0; i < elem.length; i++) {
+        elem[i].apiKey = 'INJECT_YOUR_GOOGLE_MAPS_API_KEY_HERE';
+      }
+
+      elem[0].options = firstMapOptions;
+      elem[0].mapStyle = mapStyle;
+      elem[0].circles = {
+        circles: circles
+      };
+
+      if (elem.length > 1) {
+        elem[1].options = secondMapOptions;
+
+        elem[1].markers = {
+          markers: markers,
+          fitBounds: true
+        };
+      }
+    }
+  });
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+<script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js"
+        integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7"
+        crossorigin="anonymous"></script>
+
+</body>
+</html>
