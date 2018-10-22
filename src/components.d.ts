@@ -9,6 +9,9 @@ import '@stencil/core';
 
 
 import {
+  WebGoogleMapsOptions,
+} from './types/web-google-maps/web-google-maps-options';
+import {
   WebGoogleMapsStyle,
 } from './types/web-google-maps/web-google-maps-style';
 import {
@@ -28,7 +31,7 @@ export namespace Components {
     'lng': number;
     'mapStyle': WebGoogleMapsStyle;
     'markers': WebGoogleMapsMarkers;
-    'options': google.maps.MapOptions;
+    'options': WebGoogleMapsOptions;
   }
   interface WebGoogleMapsAttributes extends StencilHTMLAttributes {
     'apiKey'?: string;
@@ -38,7 +41,7 @@ export namespace Components {
     'mapStyle'?: WebGoogleMapsStyle;
     'markers'?: WebGoogleMapsMarkers;
     'onGoogleMapsApiKeyLoaded'?: (event: CustomEvent<void>) => void;
-    'options'?: google.maps.MapOptions;
+    'options'?: WebGoogleMapsOptions;
   }
 }
 
