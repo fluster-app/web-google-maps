@@ -3,6 +3,7 @@ import {Component, Element, Event, EventEmitter, Listen, Prop, Watch} from '@ste
 import {WebGoogleMapsStyle} from '../../types/web-google-maps/web-google-maps-style';
 import {WebGoogleMapsCircle} from '../../types/web-google-maps/web-google-maps-circle';
 import {WebGoogleMapsMarker, WebGoogleMapsMarkers} from '../../types/web-google-maps/web-google-maps-markers';
+import {WebGoogleMapsOptions} from '../../types/web-google-maps/web-google-maps-options';
 
 @Component({
   tag: 'web-google-maps',
@@ -20,7 +21,7 @@ export class WebGoogleMaps {
   @Prop() lat: number;
   @Prop() lng: number;
 
-  @Prop() options: google.maps.MapOptions;
+  @Prop() options: WebGoogleMapsOptions;
 
   @Prop() mapStyle: WebGoogleMapsStyle;
 
