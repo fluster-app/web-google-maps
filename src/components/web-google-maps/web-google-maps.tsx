@@ -1,7 +1,7 @@
 import {Component, Element, Event, EventEmitter, Listen, Prop, Watch} from '@stencil/core';
 
 import {WebGoogleMapsStyle} from '../../types/web-google-maps/web-google-maps-style';
-import {WebGoogleMapsCircle, WebGoogleMapsCircles} from '../../types/web-google-maps/web-google-maps-circle';
+import {WebGoogleMapsCircle} from '../../types/web-google-maps/web-google-maps-circle';
 import {WebGoogleMapsMarker, WebGoogleMapsMarkers} from '../../types/web-google-maps/web-google-maps-markers';
 
 @Component({
@@ -24,7 +24,7 @@ export class WebGoogleMaps {
 
   @Prop() mapStyle: WebGoogleMapsStyle;
 
-  @Prop() circles: WebGoogleMapsCircles;
+  @Prop() circles: WebGoogleMapsCircle[];
 
   @Prop() markers: WebGoogleMapsMarkers;
 
@@ -124,8 +124,8 @@ export class WebGoogleMaps {
 
   private addCircles(map: google.maps.Map): Promise<void> {
     return new Promise<void>((resolve) => {
-      if (this.circles && this.circles.circles && this.circles.circles.length > 0) {
-        this.circles.circles.forEach((circle: WebGoogleMapsCircle) => {
+      if (this.circles && this.circles.length > 0) {
+        this.circles.forEach((circle: WebGoogleMapsCircle) => {
           if (!circle.center && circle.lat && circle.lng) {
             circle.center = new google.maps.LatLng(circle.lat, circle.lng);
           }

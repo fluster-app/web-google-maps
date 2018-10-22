@@ -12,7 +12,7 @@ import {
   WebGoogleMapsStyle,
 } from './types/web-google-maps/web-google-maps-style';
 import {
-  WebGoogleMapsCircles,
+  WebGoogleMapsCircle,
 } from './types/web-google-maps/web-google-maps-circle';
 import {
   WebGoogleMapsMarkers,
@@ -23,7 +23,7 @@ export namespace Components {
 
   interface WebGoogleMaps {
     'apiKey': string;
-    'circles': WebGoogleMapsCircles;
+    'circles': WebGoogleMapsCircle[];
     'lat': number;
     'lng': number;
     'mapStyle': WebGoogleMapsStyle;
@@ -32,7 +32,7 @@ export namespace Components {
   }
   interface WebGoogleMapsAttributes extends StencilHTMLAttributes {
     'apiKey'?: string;
-    'circles'?: WebGoogleMapsCircles;
+    'circles'?: WebGoogleMapsCircle[];
     'lat'?: number;
     'lng'?: number;
     'mapStyle'?: WebGoogleMapsStyle;
