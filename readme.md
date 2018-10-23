@@ -16,6 +16,46 @@ Furthermore to offering a simple wrapper to use Google Maps, this Web Component 
 ## Installation
 
     $ npm install web-google-maps
+    
+### Installation in an Angular project
+
+> Please note that the following diverge a bit from the [Stencil documentation](https://stenciljs.com/docs/framework-integration)
+
+1. In the module where you would like to use the component, add `CUSTOM_ELEMENTS_SCHEMA` to your list of schemas.
+
+        @NgModule({
+            declarations: [
+                MyPage
+            ],
+            imports: [
+                CommonModule,
+                FormsModule,
+                IonicModule,
+                RouterModule.forChild(routes)
+            ],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA]
+        })
+        export class MyPageModule {
+        }
+        
+2. In `index.html` import the component. As far as I understood, web component built with Stencil inherit Lazy Loading, therefore, no worries about effect on your boot time
+
+         <script async src="webgooglemaps.js"></script>
+         
+3. Finally add the following to your `assets` configuration in your `angular.json` files in oder to include the component in your bundle
+
+       "assets": [
+           {
+             "glob": "webgooglemaps.js",
+             "input": "node_modules/web-google-maps/dist",
+             "output": "./"
+           },
+           {
+             "glob": "webgooglemaps/*",
+             "input": "node_modules/web-google-maps/dist",
+             "output": "./"
+           }
+       ]
 
 ## Getting Started
 
@@ -109,6 +149,10 @@ Markers could be provided using the property `markers`. The property could conta
 For an example of Vanilla JS use, you could have a look to the [index.html](src/index.html).
 
 Note: In Vanilla JS, only `string` properties could be directly set to the component. In order to specify object or boolean properties, wait for the document to be loaded and set the properties with the help of a script.
+
+#### `google.maps` types definition
+
+These above options inherit these from `google.maps` as defined in [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/googlemaps).
 
 ## Showcase
 
