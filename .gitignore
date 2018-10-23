@@ -25,3 +25,8 @@ UserInterfaceState.xcuserstate
 .env
 
 google-maps-key.txt
+
+.firebase
+firebase.json
+.firebaserc
+
