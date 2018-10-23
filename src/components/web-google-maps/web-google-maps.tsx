@@ -35,12 +35,12 @@ export class WebGoogleMaps {
 
   private singleInfoWindow: google.maps.InfoWindow;
 
-  componentWillLoad() {
-    this.loadGoogleMapsApi();
+  async componentDidLoad() {
+    await this.loadGoogleMapsApi();
   }
 
   @Watch('apiKey')
-  private loadGoogleMapsApi() {
+  private async loadGoogleMapsApi() {
     if (this.googleMapsLoaded || !this.apiKey) {
       return;
     }
@@ -48,11 +48,14 @@ export class WebGoogleMaps {
     const scripts = document.getElementById('webGoogleMapsApiKey');
     if (scripts) {
       // The Google Maps script should only be load once
+      // We could try to render the map
+      await this.initGoogleMaps();
       return;
     }
 
     const script = document.createElement('script');
     script.onload = () => {
+      // In case we load multiple maps in the same page, tell all the maps that the script has been loaded
       this.googleMapsApiKeyLoaded.emit();
     };
     script.id = 'webGoogleMapsApiKey';
@@ -63,17 +66,29 @@ export class WebGoogleMaps {
   }
 
   @Listen('document:googleMapsApiKeyLoaded')
+  @Watch('lat')
+  @Watch('lng')
   async initGoogleMaps(): Promise<void> {
-    return new Promise<void>(async (resolve, reject) => {
-      if (!google.maps) {
-        reject(new Error('Google Maps not loaded'));
+    return new Promise<void>(async (resolve) => {
+      if (typeof google !== 'object' || !google || !google.maps) {
+        // Google Maps not loaded
+        resolve();
         return;
       }
 
       if (!this.lat || !this.lng) {
-        reject(new Error('Google Maps center or lat/lng not defined'));
+        // Google Maps center or lat/lng not defined yet
+        resolve();
         return;
       }
+
+      if (this.googleMapsLoaded) {
+        // Web Google Maps  already loaded
+        resolve();
+        return;
+      }
+
+      this.googleMapsLoaded = true;
 
       let mapOptions: google.maps.MapOptions = this.normalizeGoogleMapsOptions();
 
@@ -102,8 +117,6 @@ export class WebGoogleMaps {
         await this.addMarkers(map);
         this.fitMapToBounds(map);
       });
-
-      this.googleMapsLoaded = true;
 
       resolve();
     });
