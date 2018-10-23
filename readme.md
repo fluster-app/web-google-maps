@@ -39,7 +39,7 @@ Furthermore to offering a simple wrapper to use Google Maps, this Web Component 
     
 ### Installation in an Angular project
 
-> Please note that the following diverge a bit from the [Stencil documentation](https://stenciljs.com/docs/framework-integration)
+> Find a documentation about the framework integrations on the [Stencil](https://stenciljs.com/docs/overview) website
 
 1. In the module where you would like to use the component, add `CUSTOM_ELEMENTS_SCHEMA` to your list of schemas.
 
@@ -58,9 +58,24 @@ Furthermore to offering a simple wrapper to use Google Maps, this Web Component 
         export class MyComponentModule {
         }
         
-2. In `index.html` import the component. As far as I understood, web component built with Stencil inherit Lazy Loading, therefore, no worries about effect on your boot time
+2. Call `defineCustomElements(window)` from `main.ts`
 
-         <script async src="webgooglemaps.js"></script>
+         import { enableProdMode } from '@angular/core';
+         import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+         
+         import { AppModule } from './app/app.module';
+         import { environment } from './environments/environment';
+         
+         import { defineCustomElements as defineCustomElementsGoogleMaps } from 'web-google-maps/dist/loader';
+         
+         if (environment.production) {
+           enableProdMode();
+         }
+         
+         platformBrowserDynamic().bootstrapModule(AppModule)
+           .catch(err => console.log(err));
+         
+         defineCustomElementsGoogleMaps(window);
          
 3. Finally add the following to your `assets` configuration in your `angular.json` files in oder to include the component in your bundle
 
