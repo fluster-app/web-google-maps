@@ -5,11 +5,31 @@ Web Google Maps is a Web Component which lets you easily integrate Google Maps i
 [![GitHub](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/fluster/web-google-maps)
 [![npm](https://img.shields.io/npm/dm/web-photo-filter.svg)]()
 
-## Goals
+## Table of contents
+
+- [Goal](#goal)
+- [Features](#features)
+- [Installation](#installation)
+  - [Installation in an Angular project](#installation-in-an-angular-project)
+- [Getting Started](#getting-started)
+  - [Google Maps API key](#google-maps-api-key)
+  - [Options](#options)
+  - [Style](#style)
+  - [Circles](#circles)
+  - [Markers](#markers)
+    - [Important note regarding Safari 11](#important-note-regarding-safari-11)
+    - [`google.maps` types definition](#googlemaps-types-definition)
+- [Samples](#samples)
+  - [Vanilla JS](#vanilla-js)
+  - [Angular](#angular)
+- [Showcase](#showcase)
+- [License](#license)
+
+## Goal
 
 The first goal of this project was to provide an agnostic Web Component to easily integrate Google Maps into my project [Fluster](https://fluster.io).
 
-### Features
+## Features
 
 Furthermore to offering a simple wrapper to use Google Maps, this Web Component will inject and load only once the Google Maps Javascript API. This allows you for example to include multiple Google Maps in a single page. 
 
