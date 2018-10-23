@@ -7,7 +7,7 @@ Web Google Maps is a Web Component which lets you easily integrate Google Maps i
 
 ## Goals
 
-The goal of this project is to provide an agnostic Web Component to easily integrate Google Maps into my project [Fluster](https://fluster.io).
+The first goal of this project was to provide an agnostic Web Component to easily integrate Google Maps into my project [Fluster](https://fluster.io).
 
 ### Features
 
@@ -25,17 +25,17 @@ Furthermore to offering a simple wrapper to use Google Maps, this Web Component 
 
         @NgModule({
             declarations: [
-                MyPage
+              MyComponent
             ],
             imports: [
-                CommonModule,
-                FormsModule,
-                IonicModule,
-                RouterModule.forChild(routes)
+              CommonModule
+            ],
+            exports: [
+              MyComponent
             ],
             schemas: [CUSTOM_ELEMENTS_SCHEMA]
         })
-        export class MyPageModule {
+        export class MyComponentModule {
         }
         
 2. In `index.html` import the component. As far as I understood, web component built with Stencil inherit Lazy Loading, therefore, no worries about effect on your boot time
@@ -141,18 +141,27 @@ Markers could be provided using the property `markers`. The property could conta
      
      <web-google-maps [lat]="47.36667" [lng]="8.55" [markers]="markers"></web-google-maps>
 
+#### Important note regarding Safari 11
 
-**Important note**: Safari 11 does not seems to handle correctly `markers` if the Google Maps is used in a shadow dom, which is the case of this Web Component. The workaround is to specify an `icon` for each markers which will make Safari happy (References: [Stackoverflow workaround](https://stackoverflow.com/a/50964637/5404186) and [Google Web Components issue](https://github.com/GoogleWebComponents/google-map/issues/419))
-
-#### Vanilla JS
-
-For an example of Vanilla JS use, you could have a look to the [index.html](src/index.html).
-
-Note: In Vanilla JS, only `string` properties could be directly set to the component. In order to specify object or boolean properties, wait for the document to be loaded and set the properties with the help of a script.
+Safari 11 does not seems to handle correctly `markers` if the Google Maps is used in a shadow dom, which is the case of this Web Component. The workaround is to specify an `icon` for each markers which will make Safari happy (References: [Stackoverflow workaround](https://stackoverflow.com/a/50964637/5404186) and [Google Web Components issue](https://github.com/GoogleWebComponents/google-map/issues/419))
 
 #### `google.maps` types definition
 
 These above options inherit these from `google.maps` as defined in [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/googlemaps).
+
+## Samples
+
+If you are looking for code samples, you could have a look to the following examples:
+
+#### Vanilla JS
+
+An example of Vanilla JS usage is provided in the [index.html](src/index.html) file (which is also the showcase website itself).
+
+Note: In Vanilla JS, only `string` properties could be directly assigned to the component. In order to specify object or boolean properties, wait for the document to be loaded and set the properties with the help of a script.
+
+#### Angular
+
+An example of an Angular usage is provided in a component of the website of my project [Fluster](https://github.com/fluster/fluster-website/tree/master/src/components/core/google/google-map).
 
 ## Showcase
 
