@@ -185,7 +185,7 @@ An example of an Angular usage is provided in a component of the website of my p
 
 ## Showcase
 
-A showcase is available at [https://webgoogl3maps.com](https://webgoogl3maps.com)  
+A showcase is available at [https://web-component-maps.com](https://web-component-maps.com)  
 
 The above showcase is simply the `www` folder of this project. If you clone the repository you could run it locally too using `npm start`, but you would need first to inject your `apiKey` in [index.html](src/index.html).
 
