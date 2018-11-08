@@ -1,6 +1,6 @@
 {
   "name": "web-google-maps",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Web Component to wrap and use Google Maps",
   "keywords": [
     "google maps",
@@ -24,16 +24,17 @@
     "test": "jest --no-cache",
     "test.watch": "jest --watch --no-cache"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/googlemaps": "^3.30.16"
+  },
   "devDependencies": {
-    "@stencil/core": "^0.14.0",
+    "@stencil/core": "^0.15.2",
     "@stencil/dev-server": "latest",
     "@stencil/postcss": "^0.1.0",
     "@stencil/sass": "0.1.1",
     "@stencil/utils": "latest",
-    "@types/googlemaps": "^3.30.15",
-    "@types/jest": "^23.3.5",
-    "autoprefixer": "^9.2.1",
+    "@types/jest": "^23.3.9",
+    "autoprefixer": "^9.3.1",
     "jest": "^23.5.0"
   },
   "repository": {
