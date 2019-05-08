@@ -24,14 +24,15 @@
     "test": "jest --no-cache",
     "test.watch": "jest --watch --no-cache"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@types/googlemaps": "^3.30.19"
+  },
   "devDependencies": {
     "@stencil/core": "^1.0.0-alpha.23",
     "@stencil/dev-server": "latest",
     "@stencil/postcss": "^0.1.0",
     "@stencil/sass": "0.2.1",
     "@stencil/utils": "latest",
-    "@types/googlemaps": "^3.30.19",
     "@types/jest": "^24.0.12",
     "autoprefixer": "^9.5.1",
     "jest": "^24.8.0"
