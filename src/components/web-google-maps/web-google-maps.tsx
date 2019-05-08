@@ -1,5 +1,7 @@
 import {Component, Element, Event, EventEmitter, Listen, Prop, Watch} from '@stencil/core';
 
+import {h} from '@stencil/core';
+
 import {WebGoogleMapsStyle} from '../../types/web-google-maps/web-google-maps-style';
 import {WebGoogleMapsCircle} from '../../types/web-google-maps/web-google-maps-circle';
 import {WebGoogleMapsMarker, WebGoogleMapsMarkers} from '../../types/web-google-maps/web-google-maps-markers';
@@ -65,7 +67,7 @@ export class WebGoogleMaps {
     document.head.appendChild(script);
   }
 
-  @Listen('document:googleMapsApiKeyLoaded')
+  @Listen('googleMapsApiKeyLoaded', {target: 'document'})
   @Watch('lat')
   @Watch('lng')
   async initGoogleMaps(): Promise<void> {

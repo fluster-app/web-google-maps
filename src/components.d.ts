@@ -5,9 +5,8 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
+import { JSX } from '@stencil/core';
 import {
   WebGoogleMapsOptions,
 } from './types/web-google-maps/web-google-maps-options';
@@ -23,7 +22,6 @@ import {
 
 
 export namespace Components {
-
   interface WebGoogleMaps {
     'apiKey': string;
     'circles': WebGoogleMapsCircle[];
@@ -33,7 +31,10 @@ export namespace Components {
     'markers': WebGoogleMapsMarkers;
     'options': WebGoogleMapsOptions;
   }
-  interface WebGoogleMapsAttributes extends StencilHTMLAttributes {
+}
+
+declare namespace LocalJSX {
+  interface WebGoogleMaps extends JSXBase.HTMLAttributes {
     'apiKey'?: string;
     'circles'?: WebGoogleMapsCircle[];
     'lat'?: number;
@@ -43,16 +44,25 @@ export namespace Components {
     'onGoogleMapsApiKeyLoaded'?: (event: CustomEvent<void>) => void;
     'options'?: WebGoogleMapsOptions;
   }
-}
 
-declare global {
-  interface StencilElementInterfaces {
+  interface ElementInterfaces {
     'WebGoogleMaps': Components.WebGoogleMaps;
   }
 
-  interface StencilIntrinsicElements {
-    'web-google-maps': Components.WebGoogleMapsAttributes;
+  interface IntrinsicElements {
+    'WebGoogleMaps': LocalJSX.WebGoogleMaps;
   }
+}
+export { LocalJSX as JSX };
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface ElementInterfaces extends LocalJSX.ElementInterfaces {}
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+declare global {
 
 
   interface HTMLWebGoogleMapsElement extends Components.WebGoogleMaps, HTMLStencilElement {}
@@ -60,7 +70,6 @@ declare global {
     prototype: HTMLWebGoogleMapsElement;
     new (): HTMLWebGoogleMapsElement;
   };
-
   interface HTMLElementTagNameMap {
     'web-google-maps': HTMLWebGoogleMapsElement
   }
@@ -68,14 +77,5 @@ declare global {
   interface ElementTagNameMap {
     'web-google-maps': HTMLWebGoogleMapsElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
