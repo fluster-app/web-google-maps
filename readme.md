@@ -1,3 +1,5 @@
+**[NOT MAINTAINED]** This project is discontinued respectively I don't maintain it anymore.
+
 # Web Google Maps
 
 Web Google Maps is a Web Component which lets you easily integrate Google Maps in your application.
